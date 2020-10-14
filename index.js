@@ -63,21 +63,21 @@ pool.on('error', function (err, client) {
 // })
 
 
-app.get("/login/:id", function(req, res) { 
-  // var username = req.body.num1; 
-  // var num2 = req.body.num2; 
+// app.get("/login/:id", function(req, res) { 
+//   // var username = req.body.num1; 
+//   // var num2 = req.body.num2; 
   
-  pool.query(`SELECT * FROM login_tripaxy WHERE name = ${req.params.id} ;`, function(err, res) {
-    if(err) {
-        return console.error('error running query', err);
-    }
+//   pool.query(`SELECT * FROM login_tripaxy WHERE name = ${req.params.id} ;`, function(err, res) {
+//     if(err) {
+//         return console.error('error running query', err);
+//     }
 
-    console.log(+JSON.stringify(res.rows[0]));
-    name11 = JSON.stringify(res.rows[0]);
+//     console.log(+JSON.stringify(res.rows[0]));
+//     name11 = JSON.stringify(res.rows[0]);
    
-});
-res.send(name11);
-})
+// });
+// res.send(name11);
+// })
 
 
 // // Profile Info
@@ -138,9 +138,9 @@ res.send(name11);
 
 // //Get Info By id
 
-app.get('/getinfobyid/:id', function (req, res) {
+app.get('/getinfobyid/:username', function (req, res) {
   // First read existing users.
-  pool.query(`SELECT * FROM login_tripaxy WHERE id = ${req.params.id};`, function(err, res) {
+  pool.query(`SELECT * FROM login_tripaxy WHERE id = ${req.params.username};`, function(err, res) {
     if(err) {
         return console.error('error running query', err);
     }
