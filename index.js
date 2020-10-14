@@ -62,11 +62,11 @@ pool.on('error', function (err, client) {
 // })
 
 
-app.get("/login/:username", function(req, res) { 
+app.get("/login/:id", function(req, res) { 
   // var username = req.body.num1; 
   // var num2 = req.body.num2; 
   
-  pool.query(`SELECT * FROM login_tripaxy WHERE name = ${req.params.username}; ;`, function(err, res) {
+  pool.query(`SELECT * FROM login_tripaxy WHERE name = ${req.params.id}; ;`, function(err, res) {
     if(err) {
         return console.error('error running query', err);
     }
