@@ -62,7 +62,7 @@ pool.on('error', function (err, client) {
 // })
 
 
-app.post("/login", function(req, res) { 
+app.get("/login", function(req, res) { 
   var username = req.body.num1; 
   var num2 = req.body.num2; 
   
@@ -71,8 +71,8 @@ app.post("/login", function(req, res) {
         return console.error('error running query', err);
     }
 
-    console.log(+JSON.stringify(res.rows));
-    name1 = JSON.stringify(res.rows);
+    console.log(+JSON.stringify(res.rows[0]));
+    name1 = JSON.stringify(res.rows[0]);
    
 });
 res.send(name1);
