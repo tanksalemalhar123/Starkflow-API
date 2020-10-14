@@ -7,6 +7,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 let abc = [];
 let name1;
 let name2;
+let name11;
 
 var cors = require('cors');
 
@@ -72,10 +73,10 @@ app.get("/login/:id", function(req, res) {
     }
 
     console.log(+JSON.stringify(res.rows[0]));
-    name1 = JSON.stringify(res.rows[0]);
+    name11 = JSON.stringify(res.rows[0]);
    
 });
-res.send(name1);
+res.send(name11);
 })
 
 
@@ -137,19 +138,19 @@ res.send(name1);
 
 // //Get Info By id
 
-// app.get('/getinfobyid/:id', function (req, res) {
-//   // First read existing users.
-//   pool.query(`SELECT * FROM patientinfo WHERE id = ${req.params.id};`, function(err, res) {
-//     if(err) {
-//         return console.error('error running query', err);
-//     }
+app.get('/getinfobyid/:id', function (req, res) {
+  // First read existing users.
+  pool.query(`SELECT * FROM login_tripaxy WHERE id = ${req.params.id};`, function(err, res) {
+    if(err) {
+        return console.error('error running query', err);
+    }
 
-//     console.log(+JSON.stringify(res.rows));
-//     name2 = JSON.stringify(res.rows);
+    console.log(+JSON.stringify(res.rows));
+    name2 = JSON.stringify(res.rows);
     
-// });
-// res.send(name2);
-// })
+});
+res.send(name2);
+})
 
 
 // //Update Status of Visit By Id
