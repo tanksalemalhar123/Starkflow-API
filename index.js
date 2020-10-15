@@ -94,8 +94,8 @@ res.send(name1);
 
 app.post('/createTasks', function (req, res) {
   // First read existing users.
-  var user_id = req.body.ID;
-  var user_EMPID = req.body.EMPID;
+  var user_id = 4;
+  var user_EMPID = 400;
   var user_NAME = req.body.NAME;
   
   var user_taskname = req.body.taskname;
