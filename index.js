@@ -140,6 +140,9 @@ pool.on('error', function (err, client) {
 
 app.get('/getinfobyid', function (req, res) {
   // First read existing users.
+  var user_name=req.body.name;
+  console.log("User name = "+user_name);
+
   
   pool.query(`SELECT * FROM login_tripaxy WHERE name = '${req.body}';`, function(err, res) {
     if(err) {
