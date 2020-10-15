@@ -136,9 +136,9 @@ pool.on('error', function (err, client) {
 
 
 
-// //Get Info By id
+// //Login
 
-app.post('/getinfobyid', function (req, res) {
+app.post('/login', function (req, res) {
   // First read existing users.
   var user_name = req.body.name;
   console.log("User name = "+user_name);
@@ -151,9 +151,12 @@ app.post('/getinfobyid', function (req, res) {
 
     console.log(+JSON.stringify(res.rows[0]));
     name2 = JSON.stringify(res.rows[0]);
-    
+  
+  
 });
+
 res.send(name2)
+
 })
 
 
