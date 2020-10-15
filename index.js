@@ -156,6 +156,7 @@ app.post('/login', function (req, res) {
 });
 
 res.send(name2)
+name2 = ""
 
 })
 
