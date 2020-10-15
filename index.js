@@ -155,12 +155,12 @@ app.post('/getinfobyid', function (req, res) {
     }
 
     else{
-      name2 = "Invalid Login"
+      name2 = "Invalid"
     }
-    
+    res.send(name2);
     
 });
-res.send(name2);
+
 })
 
 
