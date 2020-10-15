@@ -79,8 +79,8 @@ app.get('/getTasks', function (req, res) {
         return console.error('error running query', err);
     }
 
-    console.log(+JSON.stringify(res.rows[0]));
-    name1 = JSON.stringify(res.rows[0]);
+    console.log(+JSON.stringify(res.rows));
+    name1 = JSON.stringify(res.rows);
     
 });
 res.send(name1);
