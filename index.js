@@ -149,8 +149,8 @@ app.post('/getinfobyid', function (req, res) {
         return console.error('error running query', err);
     }
 
-    console.log(+JSON.stringify(res.rows));
-    name2 = JSON.stringify(res.rows);
+    console.log(+JSON.stringify(res.rows[0]));
+    name2 = JSON.stringify(res.rows[0]);
     
 });
 res.send(name2);
