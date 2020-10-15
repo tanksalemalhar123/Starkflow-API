@@ -8,6 +8,7 @@ let abc = [];
 let name1;
 let name2 = "";
 let name11;
+let name3;
 
 var cors = require('cors');
 
@@ -72,6 +73,8 @@ name2 = ""
 
 })
 
+//Get Tasks
+
 app.get('/getTasks', function (req, res) {
   // First read existing users.
   pool.query(`SELECT * FROM Tasks_Tripaxy;`, function(err, res) {
@@ -84,6 +87,39 @@ app.get('/getTasks', function (req, res) {
     
 });
 res.send(name1);
+})
+
+//Create Tasks
+
+
+app.post('/createTasks', function (req, res) {
+  // First read existing users.
+  var user_id = req.body.ID;
+  var user_EMPID = req.body.EMPID;
+  var user_NAME = req.body.NAME;
+  
+  var user_taskname = req.body.taskname;
+  
+  var user_deadline = req.body.deadline;
+  
+  var user_taskid = req.body.taskid;
+
+
+  
+  pool.query(`insert into Tasks_Tripaxy (ID,EMPID,NAME,taskname,deadline,taskid) VALUES(${user_id},${user_EMPID},${user_NAME},${user_taskname},${user_deadline},${user_taskid});`, function(err, res) {
+    if(err) {
+        return console.error('error running query', err);
+    }
+
+    console.log(+JSON.stringify(res.rows[0]));
+    name3 = JSON.stringify(res.rows[0]);
+  
+  
+});
+
+res.send(name3)
+name2 = ""
+
 })
 
 
