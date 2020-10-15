@@ -144,7 +144,7 @@ app.post('/login', function (req, res) {
   console.log("User name = "+user_name);
 
   
-  pool.query(`SELECT name FROM login_tripaxy WHERE name = '${user_name}';`, function(err, res) {
+  pool.query(`SELECT authority FROM login_tripaxy WHERE name = '${user_name}';`, function(err, res) {
     if(err) {
         return console.error('error running query', err);
     }
