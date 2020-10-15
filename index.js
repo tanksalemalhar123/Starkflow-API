@@ -26,7 +26,7 @@ app.options('*', cors());
 //Hello World
 
 app.get('/', (request, response) => {
-  response.send('Welcome to Doctor Plus APIs')
+  response.send('Welcome to Tripaxy APIs')
 });
 
 
@@ -46,6 +46,47 @@ const pool = new Pool(config);
 pool.on('error', function (err, client) {
     console.error('idle client error', err.message, err.stack);
 });
+
+
+// //Login
+
+app.post('/login', function (req, res) {
+  // First read existing users.
+  var user_name = req.body.name;
+  console.log("User name = "+user_name);
+
+  
+  pool.query(`SELECT authority FROM login_tripaxy WHERE name = '${user_name}';`, function(err, res) {
+    if(err) {
+        return console.error('error running query', err);
+    }
+
+    console.log(+JSON.stringify(res.rows[0]));
+    name2 = JSON.stringify(res.rows[0]);
+  
+  
+});
+
+res.send(name2)
+name2 = ""
+
+})
+
+app.get('/getTasks', function (req, res) {
+  // First read existing users.
+  pool.query(`SELECT * FROM Tasks_Tripaxy;`, function(err, res) {
+    if(err) {
+        return console.error('error running query', err);
+    }
+
+    console.log(+JSON.stringify(res.rows[0]));
+    name1 = JSON.stringify(res.rows[0]);
+    
+});
+res.send(name1);
+})
+
+
 
 
 // app.get('/loginn', function (req, res) {
@@ -136,29 +177,7 @@ pool.on('error', function (err, client) {
 
 
 
-// //Login
 
-app.post('/login', function (req, res) {
-  // First read existing users.
-  var user_name = req.body.name;
-  console.log("User name = "+user_name);
-
-  
-  pool.query(`SELECT authority FROM login_tripaxy WHERE name = '${user_name}';`, function(err, res) {
-    if(err) {
-        return console.error('error running query', err);
-    }
-
-    console.log(+JSON.stringify(res.rows[0]));
-    name2 = JSON.stringify(res.rows[0]);
-  
-  
-});
-
-res.send(name2)
-name2 = ""
-
-})
 
 
 // //Update Status of Visit By Id
