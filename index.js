@@ -141,7 +141,7 @@ pool.on('error', function (err, client) {
 app.get('/getinfobyid', function (req, res) {
   // First read existing users.
   var user_name = req.param('name');
-  pool.query(`SELECT * FROM login_tripaxy WHERE name = ${user_name};`, function(err, res) {
+  pool.query(`SELECT * FROM login_tripaxy WHERE name = '${user_name}';`, function(err, res) {
     if(err) {
         return console.error('error running query', err);
     }
