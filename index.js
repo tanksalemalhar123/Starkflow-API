@@ -111,14 +111,14 @@ app.post('/createTasks', function (req, res) {
         return console.error('error running query', err);
     }
 
-    console.log(+JSON.stringify(res.rows[0]));
-    name3 = JSON.stringify(res.rows[0]);
+    console.log(+JSON.stringify(res.rows));
+    name3 = JSON.stringify(res.rows);
   
   
 });
 
 res.send(name3)
-name2 = ""
+name3 = ""
 
 })
 
