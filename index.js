@@ -6,7 +6,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 let abc = [];
 let name1;
-let name2;
+let name2 = "";
 let name11;
 
 var cors = require('cors');
