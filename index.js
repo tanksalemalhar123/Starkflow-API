@@ -138,7 +138,7 @@ pool.on('error', function (err, client) {
 
 // //Get Info By id
 
-app.get('/getinfobyid/:name', function (req, res) {
+app.get('/getinfobyid', function (req, res) {
   // First read existing users.
   pool.query(`SELECT * FROM login_tripaxy WHERE name = ${req.params.name};`, function(err, res) {
     if(err) {
