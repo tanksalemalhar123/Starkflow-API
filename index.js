@@ -103,10 +103,11 @@ app.post('/createTasks', function (req, res) {
   var user_deadline = req.body.deadline;
   
   var user_taskid = req.body.taskid;
+  var user_task_assigned = req.body.task_assigned;
 
   console.log(user_id+" "+user_EMPID+user_NAME+user_taskname+user_deadline+user_taskid)
   
-  pool.query(`insert into Tasks_Tripaxy (ID,EMPID,NAME,taskname,deadline,taskid) VALUES(${user_id},${user_EMPID},'${user_NAME}','${user_taskname}','${user_deadline}','${user_taskid})';`, function(err, res) {
+  pool.query(`insert into Tasks_Tripaxy (ID,EMPID,NAME,taskname,deadline,taskid) VALUES(${user_id},${user_EMPID},'${user_NAME}','${user_taskname}','${user_deadline}','${user_taskid})',${user_task_assigned};`, function(err, res) {
     if(err) {
         return console.error('error running query', err);
     }
