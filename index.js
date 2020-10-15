@@ -150,7 +150,14 @@ app.post('/getinfobyid', function (req, res) {
     }
 
     console.log(+JSON.stringify(res.rows[0]));
-    name2 = JSON.stringify(res.rows[0]);
+    if(name2){
+      name2 = JSON.stringify(res.rows[0]);
+    }
+
+    else{
+      name2 = "Invalid Login"
+    }
+    
     
 });
 res.send(name2);
