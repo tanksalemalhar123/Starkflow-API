@@ -150,17 +150,10 @@ app.post('/getinfobyid', function (req, res) {
     }
 
     console.log(+JSON.stringify(res.rows[0]));
-    if(name2){
-      name2 = JSON.stringify(res.rows[0]);
-    }
-
-    else{
-      name2 = "Invalid"
-    }
-    res.send(name2);
+    name2 = JSON.stringify(res.rows[0]);
     
 });
-
+res.send(name2)
 })
 
 
