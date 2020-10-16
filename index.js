@@ -49,35 +49,12 @@ pool.on('error', function (err, client) {
 });
 
 
-// //Login
-
-app.post('/login', function (req, res) {
-  // First read existing users.
-  var user_name = req.body.name;
-  console.log("User name = "+user_name);
-
-  
-  pool.query(`SELECT authority FROM login_tripaxy WHERE name = '${user_name}';`, function(err, res) {
-    if(err) {
-        return console.error('error running query', err);
-    }
-
-    console.log(+JSON.stringify(res.rows[0]));
-    name2 = JSON.stringify(res.rows[0]);
-  
-  
-});
-
-res.send(name2)
-name2 = ""
-
-})
 
 //Get Tasks
 // Display all users
 
-app.get('/users', (request, response) => {
-  pool.query('SELECT * FROM Tasks_Tripaxy', (error, result) => {
+app.get('/getAllTodos', (request, response) => {
+  pool.query('SELECT * FROM ToDo', (error, result) => {
       if (error) throw error;
 
       response.send(result.rows);
