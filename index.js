@@ -89,6 +89,19 @@ app.post('/updateTodo', (request, response) => {
 });
 
 
+//Delete Todo By Id 
+
+app.post('/deleteTodo', (request, response) => {
+  var id = request.body.id;
+
+  pool.query(`delete from ToDo  where id = ${id};`, (error, result) => {
+      if (error) throw error;
+
+      response.status(201).send(`Todo Deleted with ID: ${id}`);
+  });
+});
+
+
 
 
 
