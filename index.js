@@ -120,7 +120,7 @@ app.get('/getCount', (request, response) => {
       response.send(result.rows);
   });
 });
-
+ 
 
 
 //Listening On Port
