@@ -80,7 +80,7 @@ app.get('/users', (request, response) => {
   pool.query('SELECT * FROM Tasks_Tripaxy', (error, result) => {
       if (error) throw error;
 
-      response.send(result);
+      response.send(result.rows);
   });
 });
 
