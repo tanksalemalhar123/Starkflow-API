@@ -113,7 +113,7 @@ app.get('/getLastRecordId', (request, response) => {
 
 //Get Total Counr
 
-app.get('/getLastRecordId', (request, response) => {
+app.get('/getCount', (request, response) => {
   pool.query('select count(*) as count from ToDo;', (error, result) => {
       if (error) throw error;
 
