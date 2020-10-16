@@ -72,9 +72,6 @@ app.post('/addTodo', (request, response) => {
 
 
 
-
-
-
 //Update Todo By Id 
 
 app.post('/updateTodo', (request, response) => {
@@ -101,10 +98,15 @@ app.post('/deleteTodo', (request, response) => {
   });
 });
 
+//Get Last ID 
 
+app.get('/getLastRecordId', (request, response) => {
+  pool.query('SELECT id FROM ToDo ORDER BY id DESC LIMIT 1', (error, result) => {
+      if (error) throw error;
 
-
-
+      response.send(result.rows);
+  });
+});
 
 //Listening On Port
 
