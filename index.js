@@ -84,40 +84,19 @@ app.get('/users', (request, response) => {
   });
 });
 
-//Create Tasks
 
 
-app.post('/createTasks', function (req, res) {
-  // First read existing users.
-  var user_id = 4;
-  var user_EMPID = 400;
-  var user_NAME = req.body.NAME;
-  
-  var user_taskname = req.body.taskname;
-  
-  var user_deadline = req.body.deadline;
-  
-  var user_taskid = req.body.taskid;
-  var user_task_assigned = req.body.task_assigned;
+// Add a new user
+app.post('/addTodo', (request, response) => {
+  var id = request.body.id;
+  var title = request.body.title;
+  var description = request.body.description;
+  pool.query(`insert into ToDo (ID,title,description) VALUES(${id},'${title}','${description}')`, (error, result) => {
+      if (error) throw error;
 
-  console.log(user_id+" "+user_EMPID+user_NAME+user_taskname+user_deadline+user_taskid)
-  
-  pool.query(`insert into Tasks_Tripaxy (ID,EMPID,NAME,taskname,deadline,taskid) VALUES(${user_id},${user_EMPID},'${user_NAME}','${user_taskname}','${user_deadline}','${user_taskid})',${user_task_assigned};`, function(err, res) {
-    if(err) {
-        return console.error('error running query', err);
-    }
-
-    console.log(+JSON.stringify(res.rows));
-    name3 = JSON.stringify(res.rows);
-  
-  
+      response.status(201).send(`User added with ID: ${result.rows}`);
+  });
 });
-
-res.send(name3)
-name3 = ""
-
-})
-
 
 
 
