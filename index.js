@@ -72,8 +72,6 @@ app.post('/addTodo', (request, response) => {
 
 
                      
-
-
 //Update Todo By Id 
 
 app.post('/updateTodo', (request, response) => {
@@ -111,6 +109,19 @@ app.get('/getLastRecordId', (request, response) => {
       response.send(result.rows);
   });
 });
+
+
+//Get Total Counr
+
+app.get('/getLastRecordId', (request, response) => {
+  pool.query('select count(*) as count from ToDo;', (error, result) => {
+      if (error) throw error;
+
+      response.send(result.rows);
+  });
+});
+
+
 
 //Listening On Port
 
