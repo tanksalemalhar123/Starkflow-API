@@ -94,7 +94,7 @@ app.post('/addTodo', (request, response) => {
   pool.query(`insert into ToDo (ID,title,description) VALUES(${id},'${title}','${description}')`, (error, result) => {
       if (error) throw error;
 
-      response.status(201).send(`User added with ID: ${result.rows}`);
+      response.status(201).send(`User added with ID: ${id}`);
   });
 });
 
