@@ -74,20 +74,15 @@ name2 = ""
 })
 
 //Get Tasks
+// Display all users
 
-app.get('/getTasks', function (req, res) {
-  // First read existing users.
-  pool.query(`SELECT * FROM Tasks_Tripaxy;`, function(err, res) {
-    if(err) {
-        return console.error('error running query', err);
-    }
+app.get('/users', (request, response) => {
+  pool.query('SELECT * FROM Tasks_Tripaxy', (error, result) => {
+      if (error) throw error;
 
-    console.log(+JSON.stringify(res.rows));
-    name1 = JSON.stringify(res.rows);
-    
+      response.send(result);
+  });
 });
-res.send(name1);
-})
 
 //Create Tasks
 
